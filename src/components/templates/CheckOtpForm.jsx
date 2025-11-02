@@ -1,4 +1,5 @@
 import { checkOTP } from "../../services/auth";
+import { setCookie } from "../../utils/cookie";
 
 function CheckOtpForm({ code , setCode , setStep , mobile }) {
 
@@ -11,8 +12,8 @@ function CheckOtpForm({ code , setCode , setStep , mobile }) {
         console.log({response , error}) ;
 
         if (response) { 
-            console.log(response) ; 
-
+            setCookie(response.data); 
+            
         }
         if (error) { 
             console.log(error.response.data.message) ;
