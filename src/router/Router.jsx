@@ -11,6 +11,9 @@ function Router() {
     const {data , isLoading , error} = useQuery(["profile"], getProfile);
     console.log({data , isLoading , error}) ; 
 
+    if (isLoading) return (<p>Loading...</p>) ; 
+
+    
   return (
     <Routes>
         <Route path="/" element = {<HomePage/>} />
