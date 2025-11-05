@@ -27,6 +27,9 @@
     cursor: pointer;
     border-radius: 5px;
 }
+.form button:disabled {
+    opacity: 0.5;
+}
 
 .form p { 
     background-color: #a62626;
