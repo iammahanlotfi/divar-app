@@ -4,4 +4,9 @@ const addCategory = (data) => {
     return api.post("category" , data); 
 }; 
 
-export {addCategory};
+const getCategory = () => { 
+    return api.get("category"); 
+}; 
+
+
+export {addCategory , getCategory};
