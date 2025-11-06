@@ -6,7 +6,10 @@ const addCategory = (data) => {
 
 const getCategory = () => { 
     return api.get("category"); 
-}; 
+};
 
+const deleteCategory = (id) => {
+    return api.delete(`category/${id}`);
+};
 
-export {addCategory , getCategory};
+export {addCategory , getCategory , deleteCategory};
