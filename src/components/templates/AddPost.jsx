@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query"
 import { getCategory } from "../../services/admin"
 import { useState } from "react";
 import styles from "./AddPost.module.css"
+import { getCookie } from "../../utils/cookie";
+import axios from "axios";
 
 function AddPost() {
     const {data} = useQuery(["get-categories"] , getCategory) ;
@@ -27,8 +29,22 @@ function AddPost() {
     };
 
     const addHandler = (event) => { 
-        event.preventDefault() ; 
-        console.log(form) ;
+        event.preventDefault() ;
+        
+        const formData = new FormData() ;
+
+        for (let key in form) { 
+            formData.append(key , form[key]);
+        }
+
+        const token = getCookie("accessToken");
+
+        axios.post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, { 
+            headers : { 
+                "Content-Type": "multipart/form-data",
+                Authorization: `bearer ${token}`
+            }
+        }).then((res) => console.log(res)).catch((error) => console.log(error));
 
     }
 
@@ -39,15 +55,11 @@ function AddPost() {
         <input type="text" name="title" id="title" />
         <label htmlFor="content">توضیحات</label>
         <textarea name="content" id="content"/>
-
-        <input type="text" name="amount" id="amount" />
         <label htmlFor="amount">قیمت</label>
-
-        <input type="text" name="city" id="city" />
+        <input type="number" name="amount" id="amount" />
         <label htmlFor="city">شهر</label>
-
+        <input type="text" name="city" id="city" />
         <label htmlFor="category">دسته بندی</label>
-
         <select name="category" id="category">
             {data?.data.map((item) => (
                 <option key={item._id} value={item._id} >{item.name}</option>
