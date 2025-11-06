@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { getCategory } from "../../services/admin"
 import { useState } from "react";
+import styles from "./AddPost.module.css"
 
 function AddPost() {
     const {data} = useQuery(["get-categories"] , getCategory) ;
@@ -32,7 +33,7 @@ function AddPost() {
     }
 
   return (
-    <form onChange={changeHandler} >
+    <form onChange={changeHandler} className={styles.form}>
         <h3>افزودن آگهی</h3>
         <label htmlFor="title">عنوان</label>
         <input type="text" name="title" id="title" />
