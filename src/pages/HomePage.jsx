@@ -1,8 +1,14 @@
-import React from 'react'
+import Main from "../components/templates/Main"
+import Sidebar from "../components/templates/Sidebar"
+
+const style = {display : "flex"};
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div style={style} >
+      <Sidebar/>
+      <Main/>
+    </div>
   )
 }
 
