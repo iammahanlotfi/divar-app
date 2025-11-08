@@ -1,5 +1,7 @@
 
-function Main() {
+function Main({ posts }) {
+    console.log(posts) ;
+    
   return (
     <div>Main</div>
   )
