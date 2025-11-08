@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { getposts } from "../../services/user";
 import Loader from "../modules/Loader";
+import { sp } from "../../utils/numbers";
 
 function PostList() {
     const baseURL = import.meta.env.VITE_BASE_URL;
@@ -20,8 +21,8 @@ function PostList() {
                                     <span>{post.options.content}</span>
                                 </div>
                                 <div>
-                                    <p>{post.createdAt}</p>
-                                    <span>{post.amount} تومان</span>
+                                    <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
+                                    <span>{sp(post.amount)} تومان</span>
                                 </div>
                             </div>
                         ))
