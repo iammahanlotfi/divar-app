@@ -38,3 +38,17 @@
     border-radius: 5px;
     margin-right: 40px;
 }
+
+.exitButton {  
+    background-color: #a62626;
+    color: #fff;
+    height: 40px;
+    width: 80px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
